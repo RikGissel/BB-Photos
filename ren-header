@@ -1,0 +1,63 @@
+// JS for mobile responsiveness
+const header = document.querySelector("#navigation-bar");
+const navbarMenu = document.getElementById("menu");
+const burgerMenu = document.getElementById("burger");
+const bgOverlay = document.querySelector(".overlay");
+
+// Show Menu when clicking the Burger
+// Hide Menu when clicking the Overlay
+if (burgerMenu && navbarMenu && bgOverlay) {
+  burgerMenu.addEventListener("click", () => {
+    navbarMenu.classList.toggle("is-active");
+    bgOverlay.classList.toggle("is-active");
+  });
+
+  bgOverlay.addEventListener("click", () => {
+    navbarMenu.classList.toggle("is-active");
+    bgOverlay.classList.toggle("is-active");
+  });
+}
+
+// Hide Menu when Click the Links
+document.querySelectorAll(".menu-link").forEach((link) => {
+  link.addEventListener("click", () => {
+    navbarMenu.classList.remove("is-active");
+    bgOverlay.classList.remove("is-active");
+  });
+});
+
+// HTML for navbar
+header.innerHTML += `
+<header class="header">
+  <div class="container">
+    <nav class="navbar">
+      <a href="../index.php" class="brand">
+        <span>Ren</span
+        ><span>Hverdag<i class="fa-solid fa-bucket"></i></span>
+      </a>
+      <div class="burger" id="burger">
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+      </div>
+      <span class="overlay"></span>
+      <div class="menu" id="menu">
+        <ul class="menu-inner">
+          <li class="menu-item">
+            <a class="menu-link" href="#">Forside</a>
+          </li>
+          <li class="menu-item">
+            <a class="menu-link" href="#">Service</a>
+          </li>
+          <li class="menu-item">
+            <a class="menu-link" href="#">Kontakt Os</a>
+          </li>
+          <li class="menu-item">
+            <a class="menu-link" href="#">FAQ</a>
+          </li>
+        </ul>
+      </div>
+      <a href="../index.php" class="menu-block">61 75 21 97</a>
+    </nav>
+  </div>
+</header>`;
